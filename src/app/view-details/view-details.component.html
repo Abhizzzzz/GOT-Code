@@ -1,0 +1,198 @@
+<!-- loader -->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" loadingText="Loading..." type="pacman">
+</ngx-spinner>
+<!-- if books -->
+<div class="container" *ngIf="flag == 'books'">
+  <img src="./assets/books.jpg" class="img-fluid" style="height: 50vh;width: 100vw;">
+  <form #createForm="ngForm">
+    <!-- Name -->
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Name</label>
+      <input type="name" class="form-control" id="exampleFormControlInput1" name="name" [(ngModel)]="detail.name" placeholder="Name of the book"
+        readonly>
+    </div>
+    <!-- Isbn -->
+    <div class="form-group">
+      <label for="exampleFormControlInput2">Isbn</label>
+      <input type="isbn" class="form-control" id="exampleFormControlInput2" name="isbn" [(ngModel)]="detail.isbn" placeholder="Isbn"
+        readonly>
+    </div>
+    <!-- Aurthors -->
+    <div class="form-group">
+      <label for="exampleFormControlInput3">Authors</label>
+      <input type="authors" class="form-control" id="exampleFormControlInput3" name="author" [(ngModel)]="detail.authors" placeholder="Authors"
+        *ngFor="let author of detail.authors" readonly>
+    </div>
+    <!-- Num of pages -->
+    <div class="form-group">
+      <label for="exampleFormControlInput4">Number Of Pages</label>
+      <input type="numberOfPages" class="form-control" id="exampleFormControlInput4" name="numberOfPages" [(ngModel)]="detail.numberOfPages"
+        placeholder="Number Of Pages" readonly>
+    </div>
+    <!-- Publisher -->
+    <div class="form-group">
+      <label for="exampleFormControlInput5">Publisher</label>
+      <input type="publisher" class="form-control" id="exampleFormControlInput5" name="publisher" [(ngModel)]="detail.publisher"
+        placeholder="Publisher" readonly>
+    </div>
+    <!-- Country -->
+    <div class="form-group">
+      <label for="exampleFormControlInput6">Country</label>
+      <input type="country" class="form-control" id="exampleFormControlInput6" name="country" [(ngModel)]="detail.country" placeholder="country"
+        readonly>
+    </div>
+    <!-- Media Type -->
+    <div class="form-group">
+      <label for="exampleFormControlInput7">Media Type</label>
+      <input type="mediaType" class="form-control" id="exampleFormControlInput7" name="mediaType" [(ngModel)]="detail.mediaType"
+        placeholder="MediaType" readonly>
+    </div>
+    <!-- Released -->
+    <div class="form-group">
+      <label for="exampleFormControlInput8">Released</label>
+      <input type="released" class="form-control" id="exampleFormControlInput8" name="released" [(ngModel)]="detail.released" placeholder="Released"
+        readonly>
+    </div>
+    <div class="form-group" style="text-align: center">
+      <a class="btn btn-info" (click)="goBackToPreviousPage()">Go Back </a>
+    </div>
+  </form>
+</div>
+<!-- if characters -->
+<div class="container" *ngIf="flag == 'characters'">
+  <img src="./assets/characters.jpg" class="img-fluid" style="height: 50vh;width: 100vw;">
+  <form #createForm="ngForm">
+    <!-- Name -->
+    <div class="form-group">
+      <label for="exampleFormControlInput11">Name</label>
+      <input type="name" class="form-control" id="exampleFormControlInput11" name="name" [(ngModel)]="detail.name" placeholder="No name found"
+        readonly>
+    </div>
+    <!-- Gender -->
+    <div class="form-group">
+      <label for="exampleFormControlInput22">Gender</label>
+      <input type="gender" class="form-control" id="exampleFormControlInput22" name="gender" [(ngModel)]="detail.gender" placeholder="No gender found"
+        readonly>
+    </div>
+    <!-- Culture -->
+    <div class="form-group">
+      <label for="exampleFormControlInput33">Culture</label>
+      <input type="culture" class="form-control" id="exampleFormControlInput33" name="culture" [(ngModel)]="detail.culture" placeholder="No culture found"
+        readonly>
+    </div>
+    <!-- Born-->
+    <div class="form-group">
+      <label for="exampleFormControlInput44">Born</label>
+      <input type="born" class="form-control" id="exampleFormControlInput44" name="born" [(ngModel)]="detail.born" placeholder="No born found"
+        readonly>
+    </div>
+    <!-- Died -->
+    <div class="form-group">
+      <label for="exampleFormControlInput55">Died</label>
+      <input type="died" class="form-control" id="exampleFormControlInput55" name="died" [(ngModel)]="detail.died" placeholder="Not found"
+        readonly>
+    </div>
+    <!-- Aliases -->
+    <div class="form-group">
+      <label for="exampleFormControlInput66">Aliases</label>
+      <input type="aliases" class="form-control" id="exampleFormControlInput66" name="aliase" [(ngModel)]="detail.aliases" placeholder="No aliases found"
+        *ngFor="let aliase of detail.aliases" readonly>
+    </div>
+    <!-- Father -->
+    <div class="form-group">
+      <label for="exampleFormControlInput77">Father</label>
+      <input type="father" class="form-control" id="exampleFormControlInput77" name="father" [(ngModel)]="detail.father" placeholder="No father found"
+        readonly>
+    </div>
+    <!-- Mother -->
+    <div class="form-group">
+      <label for="exampleFormControlInput88">Mother</label>
+      <input type="mother" class="form-control" id="exampleFormControlInput88" name="mother" [(ngModel)]="detail.mother" placeholder="No mother found"
+        readonly>
+    </div>
+    <!-- Spouse -->
+    <div class="form-group">
+      <label for="exampleFormControlInput99">Spouse</label>
+      <input type="spouse" class="form-control" id="exampleFormControlInput99" name="spouse" [(ngModel)]="detail.spouse" placeholder="No spouse found"
+        readonly>
+    </div>
+    <!-- Tv Series -->
+    <div class="form-group" *ngIf="detail.tvSeries != undefined">
+      <label for="exampleFormControlSelect33">Tv Series</label>
+      <select *ngIf="detail.tvSeries[0] != ''" multiple class="form-control" id="exampleFormControlSelect33" name="tvSeries" [(ngModel)]="detail.tvSeries"
+        readonly>
+        <option *ngFor="let tvSerie of detail.tvSeries" [value]="tvSerie">{{tvSerie}}</option>
+      </select>
+      <input *ngIf="detail.tvSeries[0] == ''" type="tvSeries" class="form-control" id="exampleFormControlInput1010" placeholder="No tv series found"
+        readonly>
+    </div>
+    <!-- Played By -->
+    <div class="form-group">
+      <label for="exampleFormControlInput1111">Played By</label>
+      <input type="playedBy" class="form-control" id="exampleFormControlInput1111" name="playedBy" [(ngModel)]="detail.playedBy"
+        placeholder="Not found" *ngFor="let played of detail.playedBy" readonly>
+    </div>
+    <div class="form-group" style="text-align: center">
+      <a class="btn btn-info" (click)="goBackToPreviousPage()">Go Back </a>
+    </div>
+  </form>
+</div>
+<!-- if houses -->
+<div class="container" *ngIf="flag == 'houses'">
+  <img src="./assets/houses.jpg" class="img-fluid" style="height: 50vh;width: 100vw;">
+  <form #createForm="ngForm">
+    <!-- Name -->
+    <div class="form-group">
+      <label for="exampleFormControlInput11">Name</label>
+      <input type="name" class="form-control" id="exampleFormControlInput11" name="name" [(ngModel)]="detail.name" placeholder="No name found"
+        readonly>
+    </div>
+    <!-- Region -->
+    <div class="form-group">
+      <label for="exampleFormControlInput22">Region</label>
+      <input type="region" class="form-control" id="exampleFormControlInput22" name="region" [(ngModel)]="detail.region" placeholder="No region found"
+        readonly>
+    </div>
+    <!-- Coat Of Arms -->
+    <div class="form-group">
+      <label for="exampleFormControlInput33">Coat Of Arms</label>
+      <input type="coatOfArms" class="form-control" id="exampleFormControlInput33" name="coatOfArms" [(ngModel)]="detail.coatOfArms"
+        placeholder="No cat of arms found" readonly>
+    </div>
+    <!-- Words-->
+    <div class="form-group">
+      <label for="exampleFormControlInput44">Words</label>
+      <input type="words" class="form-control" id="exampleFormControlInput44" name="words" [(ngModel)]="detail.words" placeholder="No words found"
+        readonly>
+    </div>
+    <!-- Titles -->
+    <div class="form-group" *ngIf="detail.titles != undefined">
+      <label for="exampleFormControlSelect33">Titles</label>
+      <select *ngIf="detail.titles[0] != ''" multiple class="form-control" id="exampleFormControlSelect33" name="titles" [(ngModel)]="detail.titles"
+        readonly>
+        <option *ngFor="let title of detail.titles" [value]="title">{{title}}</option>
+      </select>
+      <input *ngIf="detail.titles[0] == ''" type="titles" class="form-control" id="exampleFormControlInput1010" placeholder="No titles found"
+        readonly>
+    </div>
+    <!-- Seats -->
+    <div class="form-group" *ngIf="detail.seats != undefined">
+      <label for="exampleFormControlSelect33">Seats</label>
+      <select *ngIf="detail.seats[0] != ''" multiple class="form-control" id="exampleFormControlSelect33" name="seats" [(ngModel)]="detail.seats"
+        readonly>
+        <option *ngFor="let seat of detail.seats" [value]="seat">{{seat}}</option>
+      </select>
+      <input *ngIf="detail.seats[0] == ''" type="seats" class="form-control" id="exampleFormControlInput1010" placeholder="No seats found"
+        readonly>
+    </div>
+    <!-- Founded -->
+    <div class="form-group">
+      <label for="exampleFormControlInput77">Founded</label>
+      <input type="founded" class="form-control" id="exampleFormControlInput77" name="founded" [(ngModel)]="detail.founded" placeholder="Not found"
+        readonly>
+    </div>
+    <div class="form-group" style="text-align: center">
+      <a class="btn btn-info" (click)="goBackToPreviousPage()">Go Back </a>
+    </div>
+  </form>
+</div>

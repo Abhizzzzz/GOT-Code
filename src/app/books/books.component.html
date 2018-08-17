@@ -1,0 +1,76 @@
+<!-- loader -->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" loadingText="Loading..." type="pacman">
+</ngx-spinner>
+<!-- filter drop-down -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="margin-top: -1.5rem;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" style="color: white;">
+          Filter by
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/books']">Books</a>
+          <a class="dropdown-item" [routerLink]="['/characters']">Characters</a>
+          <a class="dropdown-item" [routerLink]="['/houses']">Houses</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- search by -->
+<form #searchForm="ngForm" (ngSubmit)="search()">
+  <div class="input-group mb-3">
+    <input type="text" #houseName="ngModel" name="nameOfTheBook" [(ngModel)]="nameOfTheBook" class="form-control" placeholder="Book name"
+      aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit" [disabled]="!searchForm.form.valid">Search</button>
+    </div>
+  </div>
+</form>
+<!-- books card -->
+<div class="container-fluid" *ngIf="allBooks.length>1">
+  <h2 style="text-align: center;" *ngIf="allBooks.length>0">Books</h2>
+  <br>
+  <div class="row" style="text-align: center" *ngIf="allBooks.length>0">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let book of allBooks" style="text-align: center">
+      <div class="card bg-danger">
+        <img class="card-img-top" src="./assets/books.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{book.name | uppercase}}</h5>
+          <p class="card-text">
+            Publisher-{{book.publisher}} Country-{{book.country}} Media Type-{{book.mediaType}}
+          </p>
+          <a [routerLink]="['/view-details',book.url]" class="btn btn-dark">Details</a>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+<!-- searched card -->
+<div class="container" *ngIf="allBooks.length == 1">
+  <h2 style="text-align: center;" *ngIf="allBooks.length>0">Search result</h2>
+  <br>
+  <div class="row" style="text-align: center" *ngIf="allBooks.length>0">
+    <div class="col-12" *ngFor="let book of allBooks" style="text-align: center">
+      <div class="card bg-danger">
+        <img class="card-img-top" src="./assets/books.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{book.name | uppercase}}</h5>
+          <p class="card-text">
+            Publisher-{{book.publisher}} Country-{{book.country}} Media Type-{{book.mediaType}}
+          </p>
+          <a [routerLink]="['/view-details',book.url]" class="btn btn-dark">Details</a>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
